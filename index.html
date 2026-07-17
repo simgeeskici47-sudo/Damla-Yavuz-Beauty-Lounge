@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f2ed">
+  <title>Damla Yavuz | Beauty Lounge</title>
+  <style>
+    :root { --ink:#3d2a22; --muted:#80675a; --line:#dfc9b9; --cream:#f9f4ef; --rose:#b88268; --deep:#2c1c17; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family:Arial, Helvetica, sans-serif; line-height:1.55; }
+    h1,h2,h3,p { margin-top:0; }
+    h1,h2,h3,.brand { font-family:Georgia, 'Times New Roman', serif; font-weight:400; }
+    a { color:inherit; text-decoration:none; }
+    .shell { width:min(1180px, calc(100% - 40px)); margin:auto; }
+    nav { display:flex; justify-content:space-between; align-items:center; min-height:85px; gap:18px; }
+    .brand { font-size:22px; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+    .brand small { display:block; text-align:center; letter-spacing:.32em; font:9px Arial, sans-serif; margin-top:-3px; }
+    .links { display:flex; gap:25px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+    .button { display:inline-block; background:var(--deep); color:white; padding:14px 21px; border-radius:2px; font-weight:bold; letter-spacing:.08em; font-size:12px; text-transform:uppercase; transition:.2s; }
+    .button:hover { background:var(--rose); transform:translateY(-2px); }
+    .nav-actions { display:flex; gap:10px; align-items:center; }
+    .whatsapp { width:44px; height:44px; display:grid; place-items:center; background:#25d366; color:white; border-radius:50%; box-shadow:0 7px 16px rgba(37,211,102,.25); transition:transform .2s,box-shadow .2s; }
+    .whatsapp:hover { transform:translateY(-2px) scale(1.04); box-shadow:0 10px 22px rgba(37,211,102,.36); }
+    .whatsapp svg { width:21px; height:21px; fill:currentColor; }
+    .hero { min-height:650px; display:grid; grid-template-columns:1fr 1.1fr; overflow:hidden; background:#eee3db; }
+    .hero-copy { padding:90px clamp(30px,7vw,94px); display:flex; flex-direction:column; justify-content:center; background:linear-gradient(135deg,#faf7f3,#ede0d7); }
+    .eyebrow { letter-spacing:.27em; text-transform:uppercase; font-size:11px; color:var(--muted); }
+    h1 { font-size:clamp(48px,6.5vw,83px); line-height:.97; letter-spacing:-.045em; margin:20px 0; }
+    .hero-copy p { max-width:460px; color:#684e41; font-size:17px; margin-bottom:28px; }
+    .hero-art { position:relative; min-height:460px; overflow:hidden; background:#2c1c17; }
+    .hero-art:after { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,rgba(44,28,23,.3),transparent 50%); }
+    .hero-image { width:100%; height:100%; position:absolute; inset:0; object-fit:cover; object-position:center; }
+    .hero-logo { position:absolute; z-index:2; top:24px; right:24px; width:112px; height:112px; object-fit:cover; border-radius:50%; border:4px solid rgba(255,250,246,.9); box-shadow:0 10px 30px rgba(34,18,12,.28); }
+    .hero-card { position:absolute; z-index:1; right:28px; bottom:28px; background:rgba(255,250,246,.93); padding:22px 25px; width:min(310px,80%); border-left:3px solid var(--rose); }
+    .hero-card b { display:block; font-family:Georgia,serif; font-size:21px; font-weight:400; }
+    section { padding:88px 0; }
+    .intro { text-align:center; max-width:760px; margin:auto; }
+    h2 { font-size:clamp(35px,4vw,52px); line-height:1.08; margin:12px 0 18px; }
+    .intro p { color:#6e5547; }
+    .services { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px; }
+    .service { position:relative; overflow:hidden; background:#fffdfa; border:1px solid #eadcd2; box-shadow:0 13px 35px rgba(74,45,30,.08); transition:transform .35s ease,box-shadow .35s ease; }
+    .service:hover { transform:translateY(-10px); box-shadow:0 24px 48px rgba(74,45,30,.16); }
+    .service-visual { height:255px; overflow:hidden; background:#f1e4db; display:grid; place-items:center; }
+    .service-visual img { width:100%; height:100%; object-fit:cover; transition:transform .55s ease; }
+    .service:hover .service-visual img { transform:scale(1.055); }
+    .service-body { padding:23px 24px 27px; min-height:160px; position:relative; }
+    .service-body:before { content:''; position:absolute; width:32px; height:2px; background:var(--rose); top:0; left:24px; }
+    .service h3 { font-size:29px; letter-spacing:-.02em; margin:11px 0 6px; }
+    .service p { margin:0; color:#71584a; font-size:14px; }
+    .service span { letter-spacing:.16em; font-size:10px; text-transform:uppercase; color:#9a7663; }
+    .service-action { position:absolute; inset:0; z-index:3; display:grid; place-items:center; background:rgba(43,25,18,.54); opacity:0; transition:opacity .28s ease; }
+    .service-action .button { background:#fffaf6; color:var(--deep); transform:translateY(10px); transition:transform .28s ease,background .2s ease; }
+    .service:hover .service-action,.service:focus-within .service-action { opacity:1; }
+    .service:hover .service-action .button,.service:focus-within .service-action .button { transform:translateY(0); }
+    .service-action .button:hover { background:#dfb39a; }
+    .feature { background:#eaddd3; }
+    .feature-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:70px; align-items:center; }
+    .feature-list { display:grid; grid-template-columns:1fr 1fr; gap:20px 35px; margin-top:32px; }
+    .feature-list div { border-top:1px solid var(--line); padding-top:15px; }
+    .feature-list b { display:block; font-family:Georgia,serif; font-size:19px; font-weight:400; }
+    .feature-image { min-height:520px; background:url('assets/lounge-portrait-final.png') center/cover no-repeat; }
+    .reviews { background:#fffaf6; }
+    .review-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:38px; }
+    .review { border:1px solid #eadbd1; padding:29px; background:white; }
+    .stars { color:#b27658; letter-spacing:.15em; font-size:15px; margin-bottom:18px; }
+    .review p { color:#60483c; font-size:15px; }
+    .review strong { font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+    .cta { padding:0; color:white; background:var(--deep); }
+    .cta-wrap { display:grid; grid-template-columns:1fr 1fr; }
+    .cta-photo { min-height:420px; background:url('assets/ipek-kirpik.png') center/cover no-repeat; }
+    .cta-content { padding:80px clamp(30px,7vw,90px); display:flex; flex-direction:column; justify-content:center; }
+    .cta-content .eyebrow { color:#d4b3a0; }
+    .cta-content p { color:#e7d9d0; max-width:460px; }
+    .cta-content .button { align-self:flex-start; background:#d4a58c; color:var(--deep); }
+    .phone-line { display:flex; align-items:center; gap:11px; margin:4px 0 22px; font:22px Georgia,serif; color:#fff8f3; }
+    .phone-line .whatsapp { flex:0 0 auto; width:34px; height:34px; }
+    .phone-line .whatsapp svg { width:17px; height:17px; }
+    .map-section { padding:0; background:#efe2d9; }
+    .map-wrap { display:grid; grid-template-columns:.9fr 1.1fr; min-height:440px; }
+    .map-copy { padding:76px clamp(30px,7vw,90px); display:flex; flex-direction:column; justify-content:center; }
+    .map-copy p { color:#6a5043; max-width:390px; }
+    .map-frame { min-height:400px; border:0; width:100%; filter:saturate(.78) sepia(.08) contrast(.96); }
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.show { opacity:1; transform:translateY(0); }
+    .reveal > .eyebrow,.reveal > h2,.reveal > p,.reveal > .feature-list { opacity:0; transform:translateY(18px); }
+    .reveal.show > .eyebrow { animation:textIn .52s .03s ease forwards; }
+    .reveal.show > h2 { animation:textIn .62s .13s ease forwards; }
+    .reveal.show > p { animation:textIn .62s .23s ease forwards; }
+    .reveal.show > .feature-list { animation:textIn .7s .33s ease forwards; }
+    .hero-copy > * { animation:heroIn .7s both; }
+    .hero-copy > :nth-child(1) { animation-delay:.08s; }.hero-copy > :nth-child(2) { animation-delay:.18s; }.hero-copy > :nth-child(3) { animation-delay:.3s; }.hero-copy > :nth-child(4) { animation-delay:.42s; }
+    @keyframes textIn { to { opacity:1; transform:translateY(0); } }
+    @keyframes heroIn { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    .services .service:nth-child(2),.review:nth-child(2) { transition-delay:.12s; }
+    .services .service:nth-child(3),.review:nth-child(3) { transition-delay:.24s; }
+    .services .service:nth-child(4) { transition-delay:.08s; }.services .service:nth-child(5) { transition-delay:.2s; }.services .service:nth-child(6) { transition-delay:.32s; }
+    @media (prefers-reduced-motion:reduce) { *,*:before,*:after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; } }
+    footer { padding:33px 0; background:#201410; color:#e8dcd5; font-size:13px; }
+    .footer-wrap { display:flex; justify-content:space-between; gap:20px; align-items:center; }
+    @media (max-width:800px) { .links { display:none; } .hero,.feature-grid,.cta-wrap,.map-wrap { grid-template-columns:1fr; } .hero-copy { min-height:500px; } .hero-art { min-height:480px; } .services,.review-grid { grid-template-columns:1fr; } .service-visual { height:auto; aspect-ratio:1.5; } .feature-image { min-height:400px; } section { padding:64px 0; } .map-copy { padding:62px 30px; } .footer-wrap { flex-direction:column; text-align:center; } }
+  </style>
+</head>
+<body>
+  <header class="shell"><nav><a class="brand" href="#anasayfa">Damla Yavuz<small>Beauty Lounge</small></a><div class="links"><a href="#hizmetler">Hizmetler</a><a href="#hakkimizda">Lounge</a><a href="#yorumlar">Yorumlar</a></div><div class="nav-actions"><a class="whatsapp" href="https://wa.me/905051060949" target="_blank" rel="noopener" aria-label="WhatsApp üzerinden iletişime geçin"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.02 3.2a12.7 12.7 0 0 0-10.98 19.1L3.2 28.8l6.65-1.74A12.8 12.8 0 1 0 16.02 3.2Zm0 23.3a10.48 10.48 0 0 1-5.34-1.46l-.38-.23-3.95 1.03 1.05-3.84-.25-.4a10.52 10.52 0 1 1 8.87 4.9Zm5.76-7.87c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.83 1.05-1.02 1.26-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.6-.96-.85-1.6-1.9-1.79-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.1-.21.05-.4-.03-.57-.08-.16-.73-1.75-1-2.4-.27-.64-.54-.55-.73-.56h-.62c-.21 0-.56.08-.85.4-.3.32-1.12 1.1-1.12 2.68s1.15 3.12 1.31 3.34c.16.21 2.26 3.45 5.47 4.84.76.33 1.35.53 1.82.68.77.25 1.47.21 2.02.13.62-.09 1.9-.78 2.17-1.54.27-.75.27-1.4.19-1.53-.08-.14-.3-.21-.62-.38Z"/></svg></a><a class="button" href="#iletisim">Randevu Al</a></div></nav></header>
+  <main>
+    <section class="hero" id="anasayfa"><div class="hero-copy"><div class="eyebrow">Kişiye özel güzellik ritüelleri</div><h1>Işığınızı<br>ortaya çıkarın.</h1><p>Cilt bakımı, lazer epilasyon, kalıcı makyaj ve daha fazlası için özenli, modern ve güven veren bir bakım deneyimi.</p><div><a class="button" href="#iletisim">Ücretsiz cilt analizi</a></div></div><div class="hero-art"><img class="hero-image" src="assets/hero-lounge-final.png" alt="Damla Yavuz Beauty Lounge cilt bakımı"><img class="hero-logo" src="assets/damla-yavuz-logo.jpg" alt="Damla Yavuz Beauty Lounge logosu"><div class="hero-card"><div class="eyebrow">Damla Yavuz</div><b>Güzelliğiniz, uzman dokunuşlarla buluşuyor.</b></div></div></section>
+    <section id="hizmetler"><div class="shell"><div class="intro reveal"><div class="eyebrow">Öne çıkan uygulamalar</div><h2>Her detayda size özel bakım</h2><p>İhtiyacınıza uygun protokollerle, kendinizi iyi hissettiğiniz doğal ve ışıltılı görünüme birlikte ulaşalım.</p></div><div class="services">
+      <article class="service reveal"><div class="service-visual"><img src="assets/hydrofacial.png" alt="Hydrofacial cilt bakımı"></div><div class="service-body"><span>Cilt bakımı</span><h3>Hydrofacial</h3><p>Arınmış, yoğun nemli ve aydınlık bir cilt görünümü.</p></div><div class="service-action"><a class="button" href="#iletisim">Randevu Al</a></div></article>
+      <article class="service reveal"><div class="service-visual"><img src="assets/lazer.png" alt="Buz lazer uygulaması"></div><div class="service-body"><span>Lazer epilasyon</span><h3>Buz Lazer</h3><p>Konforlu uygulama ile pürüzsüz bir his.</p></div><div class="service-action"><a class="button" href="#iletisim">Randevu Al</a></div></article>
+      <article class="service reveal"><div class="service-visual"><img src="assets/ipek-kirpik.png" alt="İpek kirpik uygulaması"></div><div class="service-body"><span>Bakışlarınız için</span><h3>İpek Kirpik</h3><p>Belirgin, etkileyici ve özenle tasarlanmış bakışlar.</p></div><div class="service-action"><a class="button" href="#iletisim">Randevu Al</a></div></article>
+      <article class="service reveal"><div class="service-visual"><img src="assets/lifting.png" alt="Kirpik lifting uygulaması"></div><div class="service-body"><span>Doğal etki</span><h3>Kirpik Lifting</h3><p>Daha kıvrık ve canlı kirpikler için zarif dokunuş.</p></div><div class="service-action"><a class="button" href="#iletisim">Randevu Al</a></div></article>
+      <article class="service reveal"><div class="service-visual"><img src="assets/tirnak.png" alt="Protez tırnak uygulaması"></div><div class="service-body"><span>El & tırnak bakımı</span><h3>Protez Tırnak</h3><p>Güçlü, estetik ve uzun süre kalıcı tasarımlar.</p></div><div class="service-action"><a class="button" href="#iletisim">Randevu Al</a></div></article>
+      <article class="service reveal"><div class="service-visual"><img src="assets/incelme.png" alt="Bölgesel incelme uygulaması"></div><div class="service-body"><span>Vücut bakımı</span><h3>Bölgesel İncelme</h3><p>Hedefe yönelik, profesyonel uygulamalar.</p></div><div class="service-action"><a class="button" href="#iletisim">Randevu Al</a></div></article>
+    </div></div></section>
+    <section class="feature" id="hakkimizda"><div class="shell feature-grid"><div class="reveal"><div class="eyebrow">Damla Yavuz Beauty Lounge</div><h2>Güzellikte kendiniz gibi, en iyi hâlinizle.</h2><p>Her ziyaretinizi rahat ve iyi hissettiren bir deneyime dönüştürmek için; hijyen, özen ve kişiye özel yaklaşımı bir araya getiriyoruz.</p><div class="feature-list"><div><b>Ücretsiz cilt analizi</b><small>Cildinizin ihtiyacına uygun başlangıç.</small></div><div><b>Kişiye özel protokol</b><small>Hedeflerinize göre planlanan bakım.</small></div><div><b>Modern uygulamalar</b><small>Bakımda güncel ve etkili yöntemler.</small></div><div><b>Özenli deneyim</b><small>Sizi dinleyen, güven veren yaklaşım.</small></div></div></div><div class="feature-image reveal"></div></div></section>
+    <section class="reviews" id="yorumlar"><div class="shell"><div class="intro reveal"><div class="eyebrow">Misafirlerimizden</div><h2>Güveniniz en değerli yorumumuz.</h2></div><div class="review-grid"><article class="review reveal"><div class="stars">★★★★★</div><p>“Temiz, şık ve kaliteli bir yer arıyorsanız Damla Yavuz Beauty Lounge tercih olabilir.”</p><strong>Ayşe Karadeniz · Google</strong></article><article class="review reveal"><div class="stars">★★★★★</div><p>“Yaptığı işi seven ve bu konuda titiz davranan bir kadın. İlgi ve özen çok güzel.”</p><strong>Seda Kaya Köse · Google</strong></article><article class="review reveal"><div class="stars">★★★★★</div><p>“Güler yüzlü karşılaması, kişiye özel program hazırlaması ve ilgisi mükemmel.”</p><strong>Sevgi Öztürk · Google</strong></article></div></div></section>
+    <section class="cta" id="iletisim"><div class="cta-wrap"><div class="cta-photo" style="background-image:url('assets/damla-yavuz-logo.jpg')"></div><div class="cta-content reveal"><div class="eyebrow">Randevunuzu planlayın</div><h2>Güzelliğiniz bizimle güvende.</h2><p>Ücretsiz cilt analizi ve size en uygun uygulamalar için bizimle iletişime geçin.</p><p><strong>Çünür, 277. Cadde No:21 İç Kapı No:17<br>32200 Burdur Merkez / Isparta</strong></p><a class="phone-line" href="https://wa.me/905051060949" target="_blank" rel="noopener"><span class="whatsapp" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16.02 3.2a12.7 12.7 0 0 0-10.98 19.1L3.2 28.8l6.65-1.74A12.8 12.8 0 1 0 16.02 3.2Zm0 23.3a10.48 10.48 0 0 1-5.34-1.46l-.38-.23-3.95 1.03 1.05-3.84-.25-.4a10.52 10.52 0 1 1 8.87 4.9Zm5.76-7.87c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.83 1.05-1.02 1.26-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.6-.96-.85-1.6-1.9-1.79-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.1-.21.05-.4-.03-.57-.08-.16-.73-1.75-1-2.4-.27-.64-.54-.55-.73-.56h-.62c-.21 0-.56.08-.85.4-.3.32-1.12 1.1-1.12 2.68s1.15 3.12 1.31 3.34c.16.21 2.26 3.45 5.47 4.84.76.33 1.35.53 1.82.68.77.25 1.47.21 2.02.13.62-.09 1.9-.78 2.17-1.54.27-.75.27-1.4.19-1.53-.08-.14-.3-.21-.62-.38Z"/></svg></span>0 (505) 106 09 49</a><div><a class="button" target="_blank" rel="noopener" href="https://www.google.com.tr/maps/place//data=!4m2!3m1!1s0x14c5b7c045dc4713:0x3a80554cc5ebbc04">Yol Tarifi Al</a></div></div></div></section>
+    <section class="map-section"><div class="map-wrap"><div class="map-copy reveal"><div class="eyebrow">Bize ulaşın</div><h2>Lounge'a kolayca ulaşın.</h2><p>Çünür, 277. Cadde No:21 İç Kapı No:17, 32200 Burdur Merkez / Isparta adresinde sizi ağırlamaktan mutluluk duyarız.</p><a class="button" target="_blank" rel="noopener" href="https://www.google.com.tr/maps/dir//Damla+Yavuz+Beauty+Lounge,+%C3%87%C3%BCn%C3%BCr,+277.+Cadde+No:21+%C4%B0%C3%A7+Kap%C4%B1+No:17,+32200+Burdur+Merkez%2FIsparta/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x14c5b7c045dc4713:0x3a80554cc5ebbc04?sa=X">Haritada Aç</a></div><iframe class="map-frame" title="Damla Yavuz Beauty Lounge konumu" src="https://www.google.com/maps?q=Damla+Yavuz+Beauty+Lounge,+%C3%87%C3%BCn%C3%BCr,+277.+Cadde+No:21,+Isparta&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></section>
+  </main>
+  <footer><div class="shell footer-wrap"><div class="brand">Damla Yavuz<small>Beauty Lounge</small></div><div>© 2026 Damla Yavuz Beauty Lounge</div></div></footer>
+  <script>
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add('show'); observer.unobserve(entry.target); }
+    }), { threshold: 0.14 });
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
